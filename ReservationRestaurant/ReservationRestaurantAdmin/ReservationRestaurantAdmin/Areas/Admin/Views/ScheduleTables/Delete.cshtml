@@ -1,0 +1,53 @@
+﻿@model ReservationRestaurantAdmin.Models.ScheduleTable
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="card-body">
+    <h4 class="card-title">Schedule Table</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td class="text-dark font-weight-semibold">@Model.Id</td>
+                </tr>
+                <tr>
+                    <td>Table ID</td>
+                    <td class="text-dark font-weight-semibold">@Model.Table.Id</td>
+                </tr>
+                <tr>
+                    <td>Table Name</td>
+                    <td class="text-dark font-weight-semibold">@Model.Table.Name</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td class="text-dark font-weight-semibold">@Model.Date.Value.ToString("dd/MM/yyyy")</td>
+                </tr>
+                <tr>
+                    <td>Start Time</td>
+                    <td class="text-dark font-weight-semibold">@Model.StartTime.Value.ToString("hh:mm:ss tt")</td>
+                </tr>
+                <tr>
+                    <td>End Time</td>
+                    <td class="text-dark font-weight-semibold">@Model.EndTime.Value.ToString("hh:mm:ss tt")</td>
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

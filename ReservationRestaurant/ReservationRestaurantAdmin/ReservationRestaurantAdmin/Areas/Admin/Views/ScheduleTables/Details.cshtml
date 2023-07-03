@@ -1,0 +1,51 @@
+﻿@model ReservationRestaurantAdmin.Models.ScheduleTable
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card-body">
+    <h1>Details</h1>
+    <h4 class="card-title">Schedule Table Info</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td class="text-dark font-weight-semibold">@Model.Id</td>
+                </tr>
+                <tr>
+                    <td>Table ID</td>
+                    <td class="text-dark font-weight-semibold">@Model.Table.Id</td>
+                </tr>
+                <tr>
+                    <td>Table Name</td>
+                    <td class="text-dark font-weight-semibold">@Model.Table.Name</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td class="text-dark font-weight-semibold">@Model.Date.Value.ToString("dd/MM/yyyy")</td>
+                </tr>
+                <tr>
+                    <td>Start Time</td>
+                    <td class="text-dark font-weight-semibold">@Model.StartTime.Value.ToString("hh:mm:ss tt")</td>
+                </tr>
+                <tr>
+                    <td>End Time</td>
+                    <td class="text-dark font-weight-semibold">@Model.EndTime.Value.ToString("hh:mm:ss tt")</td>
+                </tr>
+               
+
+
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+        <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a class="btn btn-success  m-r-5" asp-action="Index">Back to List</a>
+    </div>
+</div>
+

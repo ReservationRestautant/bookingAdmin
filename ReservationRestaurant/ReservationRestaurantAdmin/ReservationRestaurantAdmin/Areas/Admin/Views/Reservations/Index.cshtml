@@ -1,0 +1,158 @@
+﻿@model IEnumerable<ReservationRestaurantAdmin.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <span class="breadcrumb-item active">Quản lý Reservation</span>
+        </nav>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <h1>
+        Quản lý Booking Await
+    </h1>
+  @*  <p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Phone - Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Number Guest</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price </th>
+                <th scope="col">Discount </th>
+                <th scope="col">Phone Guest </th>
+                <th scope="col">Feedback  </th>
+                <th scope="col">Status </th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    @if(item.Status.Equals(false))
+                    {
+                        <tr>
+                            <th scope="row">@item.Id</th>
+                            <td> @item.IdNavigation.Phone - @item.IdNavigation.Name</td>
+                            <td>@item.Date.Value.ToString("dd/MM/yyyy")</td>
+                            <td>@item.StartTime.Value.ToString("hh:mm:ss tt")</td>
+                            <td>@item.EndTime.Value.ToString("hh:mm:ss tt")</td>
+                            <td> @item.NumGuest</td>
+                            <td> @item.Description</td>
+                            <td> @item.Price</td>
+                            <td> @item.Discount</td>
+                            <td> @item.PhoneGuest</td>
+                            <td>
+                                @if (item.Feedback == null)
+                                {
+                                    <p>Chưa có feedback</p>
+                                }
+                                else
+                                {
+                                    <p style="color:blue"> @item.Feedback </p>
+                                }
+                            </td>
+                            <td>
+                                <p style="color:red">Pending</p>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.Id">Confirm</a> 
+                              @*  <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.Id">Reject</a>
+                            </td>
+                        </tr>
+                    }
+                   
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div class="table-responsive">
+    <h1>
+        Quản lý Booking
+    </h1>
+    @*  <p>
+    <a asp-action="Create">Create New</a>
+    </p>*@
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Phone - Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Number Guest</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price </th>
+                <th scope="col">Discount </th>
+                <th scope="col">Phone Guest </th>
+                <th scope="col">Feedback </th>
+                <th scope="col">Status </th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    @if (item.Status.Equals(true))
+                    {
+                        <tr>
+                            <th scope="row">@item.Id</th>
+                            <td> @item.IdNavigation.Phone - @item.IdNavigation.Name</td>
+                            <td>@item.Date.Value.ToString("dd/MM/yyyy")</td>
+                            <td>@item.StartTime.Value.ToString("hh:mm:ss tt")</td>
+                            <td>@item.EndTime.Value.ToString("hh:mm:ss tt")</td>
+                            <td> @item.NumGuest</td>
+                            <td> @item.Description</td>
+                            <td> @item.Price</td>
+                            <td> @item.Discount</td>
+                            <td> @item.PhoneGuest</td>
+                            <td>
+                                @if (item.Feedback == null)
+                                {
+                                    <p>Chưa có feedback</p>
+                                }
+                                else
+                                {
+                                    @item.Feedback
+                                }
+                            </td>
+                            <td>
+                                <p style="color:green">Approved</p>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a class="btn btn-sm btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                               
+                            </td>
+                        </tr>
+                    }
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

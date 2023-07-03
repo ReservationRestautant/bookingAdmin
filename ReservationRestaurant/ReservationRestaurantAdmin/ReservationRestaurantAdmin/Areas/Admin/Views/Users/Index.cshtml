@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ReservationRestaurantAdmin.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <span class="breadcrumb-item active">Quản lý User</span>
+        </nav>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <h1>
+        Quản lý User
+    </h1>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Password</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Role</th>
+                <th scope="col">Status</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td> @item.Phone</td>
+                        <td>@item.Password</td>
+                        <td> @item.Name</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Role</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a class="btn btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

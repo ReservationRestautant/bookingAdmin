@@ -1,0 +1,66 @@
+﻿@model ReservationRestaurantAdmin.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card-body">
+    <h1>Details</h1>
+    <h4 class="card-title">User Info</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td class="text-dark font-weight-semibold">@Model.Id</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td class="text-dark font-weight-semibold">@Model.Phone</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td class="text-dark font-weight-semibold">@Model.Password</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td class="text-dark font-weight-semibold">@Model.Name</td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td class="text-dark font-weight-semibold">
+                        @if(@Model.Role.Contains("1"))
+                        {
+                            <p>User</p>
+                        }
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td class="text-dark font-weight-semibold">
+                        @if (Model.Status.Equals(true))
+                        {
+                            <p style="color:green">Acive</p>
+                                    }
+                        else
+                        {
+                            <p style="color:red">Block</p>
+                        }
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+        <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a class="btn btn-success  m-r-5" asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+
