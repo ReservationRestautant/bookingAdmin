@@ -8,7 +8,7 @@ namespace DemoHttpClient.Model
 {
     public class Customer
     {
-        public string id {  get; set; }
+        public int id {  get; set; }
 
         public string name { get; set; }
 
@@ -20,5 +20,9 @@ namespace DemoHttpClient.Model
 
         public bool status { get; set; }
 
+        public override string ToString()
+        {
+            return $"id: {id} - name: {name} - pwd: {password} - phone: {phone} - role: {role} - status {status}";
+        }
     }
 }

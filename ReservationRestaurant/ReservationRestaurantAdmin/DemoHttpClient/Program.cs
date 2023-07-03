@@ -14,7 +14,7 @@ namespace DemoHttpClient
             ResponeUser responeUser = await getListUser();
             foreach(var item in responeUser.data)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.ToString());
             }
 
         }
@@ -34,9 +34,6 @@ namespace DemoHttpClient
 
                 //Phát sinh Exception nếu truy vấn có mã trả về không thành công
                 response.EnsureSuccessStatusCode();
-
-             /*   //in header ra để xem
-                ShowHeaders(response.Headers);*/
 
                 //lấy data về thành chuỗi string json
                 string data = await response.Content.ReadAsStringAsync();

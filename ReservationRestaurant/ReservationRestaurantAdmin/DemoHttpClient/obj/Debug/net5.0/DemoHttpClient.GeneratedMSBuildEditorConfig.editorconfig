@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DemoHttpClient
-build_property.ProjectDir = D:\ReservationRestaurant\ReservationRestaurantAdmin\DemoHttpClient\
+build_property.ProjectDir = D:\laptrinh-dotnet\bookingAdmin\ReservationRestaurant\ReservationRestaurantAdmin\DemoHttpClient\

@@ -1,4 +1,4 @@
-﻿@model ReservationRestaurantAdmin.Models.User
+﻿@model ReservationRestaurantAdmin.Models2.UserSystem
 
 @{
     ViewData["Title"] = "Details";
@@ -14,24 +14,24 @@
             <tbody>
                 <tr>
                     <td>ID</td>
-                    <td class="text-dark font-weight-semibold">@Model.Id</td>
+                    <td class="text-dark font-weight-semibold">@Model.id</td>
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td class="text-dark font-weight-semibold">@Model.Phone</td>
+                    <td class="text-dark font-weight-semibold">@Model.phone</td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td class="text-dark font-weight-semibold">@Model.Password</td>
+                    <td class="text-dark font-weight-semibold">@Model.password</td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td class="text-dark font-weight-semibold">@Model.Name</td>
+                    <td class="text-dark font-weight-semibold">@Model.name</td>
                 </tr>
                 <tr>
                     <td>Role</td>
                     <td class="text-dark font-weight-semibold">
-                        @if(@Model.Role.Contains("1"))
+                        @if(@Model.role.Equals('c'))
                         {
                             <p>User</p>
                         }
@@ -41,7 +41,7 @@
                 <tr>
                     <td>Status</td>
                     <td class="text-dark font-weight-semibold">
-                        @if (Model.Status.Equals(true))
+                        @if (Model.status.Equals(true))
                         {
                             <p style="color:green">Acive</p>
                                     }
@@ -58,7 +58,7 @@
 
     </div>
     <div>
-        <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.phone">Edit</a> |
         <a class="btn btn-success  m-r-5" asp-action="Index">Back to List</a>
     </div>
 </div>

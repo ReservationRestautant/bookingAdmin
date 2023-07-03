@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ReservationRestaurantAdmin.Models.User>
+﻿@model IEnumerable<ReservationRestaurantAdmin.Models2.UserSystem>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,7 +16,7 @@
 
 <div class="table-responsive">
     <h1>
-        Quản lý User
+        Quản lý Customer
     </h1>
     <p>
         <a asp-action="Create">Create New</a>
@@ -40,17 +40,17 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <th scope="row">@item.Id</th>
-                        <td> @item.Phone</td>
-                        <td>@item.Password</td>
-                        <td> @item.Name</td>
-                        <td>@item.Phone</td>
-                        <td>@item.Role</td>
-                        <td>@item.Status</td>
+                        <th scope="row">@item.id</th>
+                        <td> @item.phone</td>
+                        <td>@item.password</td>
+                        <td> @item.name</td>
+                        <td>@item.phone</td>
+                        <td>@item.role</td>
+                        <td>@item.status</td>
                         <td>
-                            <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a class="btn btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-phone="@item.phone">Edit</a> |
+                            <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-phone="@item.phone">Details</a> |
+                            <a class="btn btn-danger  m-r-5" asp-action="Delete" asp-route-phone="@item.phone">Delete</a>
                         </td>
                     </tr>
                 }
