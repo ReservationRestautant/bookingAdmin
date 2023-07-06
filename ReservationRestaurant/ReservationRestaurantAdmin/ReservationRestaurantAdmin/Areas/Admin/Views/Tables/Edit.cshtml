@@ -1,4 +1,4 @@
-﻿@model ReservationRestaurantAdmin.Models.Table
+﻿@model ReservationRestaurantAdmin.Models2.TableRestaurant
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,18 +12,19 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
+            <div class="form-group">
+                <label asp-for="name" class="control-label">Name</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="id" />
             <div class="form-group">
-                <label asp-for="Capacity" class="control-label"></label>
-                <input asp-for="Capacity" class="form-control" />
-                <span asp-validation-for="Capacity" class="text-danger"></span>
+                <label asp-for="capacity" class="control-label">Capacity</label>
+                <input asp-for="capacity" class="form-control" />
+                <span asp-validation-for="capacity" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+         
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

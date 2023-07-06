@@ -1,4 +1,4 @@
-﻿@model ReservationRestaurantAdmin.Models.ScheduleTable
+﻿@model ReservationRestaurantAdmin.Models2.ScheduleTables
 
 @{
     ViewData["Title"] = "Delete";
@@ -15,27 +15,27 @@
             <tbody>
                 <tr>
                     <td>ID</td>
-                    <td class="text-dark font-weight-semibold">@Model.Id</td>
+                    <td class="text-dark font-weight-semibold">@Model.id</td>
                 </tr>
                 <tr>
                     <td>Table ID</td>
-                    <td class="text-dark font-weight-semibold">@Model.Table.Id</td>
+                    <td class="text-dark font-weight-semibold">@Model.tableRestautant.id</td>
                 </tr>
                 <tr>
                     <td>Table Name</td>
-                    <td class="text-dark font-weight-semibold">@Model.Table.Name</td>
+                    <td class="text-dark font-weight-semibold">@Model.tableRestautant.name</td>
                 </tr>
                 <tr>
                     <td>Date</td>
-                    <td class="text-dark font-weight-semibold">@Model.Date.Value.ToString("dd/MM/yyyy")</td>
+                    <td class="text-dark font-weight-semibold">@Model.date.ToString("dd/MM/yyyy")</td>
                 </tr>
                 <tr>
                     <td>Start Time</td>
-                    <td class="text-dark font-weight-semibold">@Model.StartTime.Value.ToString("hh:mm:ss tt")</td>
+                    <td class="text-dark font-weight-semibold">@Model.startTime</td>
                 </tr>
                 <tr>
                     <td>End Time</td>
-                    <td class="text-dark font-weight-semibold">@Model.EndTime.Value.ToString("hh:mm:ss tt")</td>
+                    <td class="text-dark font-weight-semibold">@Model.endTime</td>
                 </tr>
 
 
@@ -46,7 +46,7 @@
     </div>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

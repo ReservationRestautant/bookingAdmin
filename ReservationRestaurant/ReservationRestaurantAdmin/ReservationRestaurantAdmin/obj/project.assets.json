@@ -7692,19 +7692,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {}
+    "C:\\Users\\Bitano\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\laptrinh-dotnet\\bookingAdmin\\ReservationRestaurant\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin.csproj",
+      "projectUniqueName": "D:\\bookingAdmin\\ReservationRestaurant\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin.csproj",
       "projectName": "ReservationRestaurantAdmin",
-      "projectPath": "D:\\laptrinh-dotnet\\bookingAdmin\\ReservationRestaurant\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "D:\\laptrinh-dotnet\\bookingAdmin\\ReservationRestaurant\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\obj\\",
+      "projectPath": "D:\\bookingAdmin\\ReservationRestaurant\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin.csproj",
+      "packagesPath": "C:\\Users\\Bitano\\.nuget\\packages\\",
+      "outputPath": "D:\\bookingAdmin\\ReservationRestaurant\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bitano\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7782,7 +7782,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

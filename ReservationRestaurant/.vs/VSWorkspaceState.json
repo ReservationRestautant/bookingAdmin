@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ReservationRestaurantAdmin",
+    "\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin",
+    "\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\Areas",
+    "\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\Areas\\Admin",
+    "\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\Areas\\Admin\\Controllers"
+  ],
+  "SelectedNode": "\\ReservationRestaurantAdmin\\ReservationRestaurantAdmin\\Areas\\Admin\\Controllers\\UsersController.cs",
+  "PreviewInSolutionExplorer": false
+}

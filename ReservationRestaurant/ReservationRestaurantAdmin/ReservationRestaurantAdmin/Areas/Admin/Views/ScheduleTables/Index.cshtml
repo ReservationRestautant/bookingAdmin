@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ReservationRestaurantAdmin.Models.ScheduleTable>
+﻿@model IEnumerable<ReservationRestaurantAdmin.Models2.ScheduleTables>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,7 +25,7 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Table ID & Table Name</th> 
+                <th scope="col">Table ID</th>
                 <th scope="col">Date</th>
                 <th scope="col">Start Time</th>
                 <th scope="col">End Time</th>
@@ -38,15 +38,15 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <th scope="row">@item.Id</th>
-                        <td> @item.Table.Id & @item.Table.Name</td>
-                        <td>@item.Date.Value.ToString("dd/MM/yyyy")</td>
-                        <td>@item.StartTime.Value.ToString("hh:mm:ss tt")</td>
-                        <td>@item.EndTime.Value.ToString("hh:mm:ss tt")</td>
+                        <th scope="row">@item.id</th>
+                        <td>@item.tableRestautant.id</td>
+                        <td>@item.date.ToString("dd/MM/yyyy")</td>
+                        <td>@item.startTime</td>
+                        <td>@item.endTime</td>
                         <td>
-                            <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a class="btn btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                            <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                            <a class="btn btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.id">Delete</a>
                         </td>
                     </tr>
                 }
