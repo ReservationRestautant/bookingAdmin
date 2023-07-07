@@ -101,6 +101,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         // GET: Admin/ScheduleTables/Create
         public IActionResult Create()
         {
+
             return View();
         }
 
@@ -138,6 +139,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 {
                     //call api success
                     _notifyService.Success("Tạo thành công");
+               
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -179,9 +181,9 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 //parse string thành json
                 var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                 ResponseObject<ScheduleTables> result = JsonSerializer.Deserialize<ResponseObject<ScheduleTables>>(data, options);
-
+                ScheduleTables schedule = await getScheduleById(id);
                 if (result.data == null) return NotFound();
-
+                ViewData["table_id"] = new SelectList(await getListTable(), "id", "name", schedule.tableRestautant.id);
                 return View(result.data);
             }
             catch (Exception ex)
@@ -195,7 +197,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("startTime,endTime,date,tableRestautant.id")] ScheduleTables scheduleTable)
+        public async Task<IActionResult> Edit(int id, [Bind("startTime,endTime,date,table_id")] ScheduleTables scheduleTable)
         {
             try
             {
@@ -224,6 +226,8 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 {
                     //call api success
                     _notifyService.Success("Cập nhật thành công");
+                    ViewData["table_id"] = new SelectList(await getListTable(), "id", "name", scheduleTable.tableRestautant.id);
+                  
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -276,7 +280,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             }
         }
 
-        public async Task<ScheduleTables> getId(int id)
+        public async Task<ScheduleTables> getScheduleById(int? id)
         {
             try
             {
@@ -317,7 +321,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         {
             try
             {
-                ScheduleTables scheduleTable = await getId(id);
+                ScheduleTables scheduleTable = await getScheduleById(id);
                 string uri = "http://localhost:8080/api/ScheduleTable?id=" + id;
                 using HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -355,6 +359,39 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         private bool ScheduleTableExists(int id)
         {
             return _context.ScheduleTables.Any(e => e.Id == id);
+        }
+
+        public async Task<List<TableRestaurant>> getListTable()
+        {
+            try
+            {
+                string uri = "http://localhost:8080/api/TableRestautant/all";
+                using HttpClient client = new HttpClient();
+
+                //add header
+                client.DefaultRequestHeaders.Accept.Add(
+                    new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                //thực thi gọi GET tới uri
+                var response = await client.GetAsync(uri);
+
+                //Phát sinh Exception nếu truy vấn có mã trả về không thành công
+                response.EnsureSuccessStatusCode();
+
+                //lấy data về thành chuỗi string json
+                string data = await response.Content.ReadAsStringAsync();
+
+                //parse string thành json
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                ResponseListTable table = JsonSerializer.Deserialize<ResponseListTable>(data, options);
+
+                return  table.data.ToList();
+                //return View(await _context.Users.ToListAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
