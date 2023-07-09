@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ReservationRestaurantAdmin.Models.Reservation>
+﻿@model IEnumerable<ReservationRestaurantAdmin.Models2.Reservations>
 
 @{
     ViewData["Title"] = "Index";
@@ -44,36 +44,36 @@
             {
                 foreach (var item in Model)
                 {
-                    @if(item.Status.Equals(false))
+                    @if(item.status.Equals(false))
                     {
                         <tr>
-                            <th scope="row">@item.Id</th>
-                            <td> @item.IdNavigation.Phone - @item.IdNavigation.Name</td>
-                            <td>@item.Date.Value.ToString("dd/MM/yyyy")</td>
-                            <td>@item.StartTime.Value.ToString("hh:mm:ss tt")</td>
-                            <td>@item.EndTime.Value.ToString("hh:mm:ss tt")</td>
-                            <td> @item.NumGuest</td>
-                            <td> @item.Description</td>
-                            <td> @item.Price</td>
-                            <td> @item.Discount</td>
-                            <td> @item.PhoneGuest</td>
+                            <th scope="row">@item.id</th>
+                            <td> @item.userSysterm.phone - @item.userSysterm.name</td>
+                            <td>@item.date</td>
+                            <td>@item.startTime</td>
+                            <td>@item.endTime</td>
+                            <td> @item.number_guest</td>
+                            <td> @item.description</td>
+                            <td> @item.price</td>
+                            <td> @item.discount</td>
+                            <td> @item.phone_guest</td>
                             <td>
-                                @if (item.Feedback == null)
+                                @if (item.feedback == null)
                                 {
                                     <p>Chưa có feedback</p>
                                 }
                                 else
                                 {
-                                    <p style="color:blue"> @item.Feedback </p>
+                                    <p style="color:blue"> @item.feedback </p>
                                 }
                             </td>
                             <td>
                                 <p style="color:red">Pending</p>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.Id">Confirm</a> 
+                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.id">Confirm</a> 
                               @*  <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
-                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.Id">Reject</a>
+                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.id">Reject</a>
                             </td>
                         </tr>
                     }
@@ -115,36 +115,36 @@
             {
                 foreach (var item in Model)
                 {
-                    @if (item.Status.Equals(true))
+                    @if (item.status.Equals(true))
                     {
                         <tr>
-                            <th scope="row">@item.Id</th>
-                            <td> @item.IdNavigation.Phone - @item.IdNavigation.Name</td>
-                            <td>@item.Date.Value.ToString("dd/MM/yyyy")</td>
-                            <td>@item.StartTime.Value.ToString("hh:mm:ss tt")</td>
-                            <td>@item.EndTime.Value.ToString("hh:mm:ss tt")</td>
-                            <td> @item.NumGuest</td>
-                            <td> @item.Description</td>
-                            <td> @item.Price</td>
-                            <td> @item.Discount</td>
-                            <td> @item.PhoneGuest</td>
+                            <th scope="row">@item.id</th>
+                            <td> @item.userSysterm.phone - @item.userSysterm.name</td>
+                            <td>@item.date</td>
+                            <td>@item.startTime</td>
+                            <td>@item.endTime</td>
+                            <td> @item.number_guest</td>
+                            <td> @item.description</td>
+                            <td> @item.price</td>
+                            <td> @item.discount</td>
+                            <td> @item.phone_guest</td>
                             <td>
-                                @if (item.Feedback == null)
+                                @if (item.feedback == null)
                                 {
                                     <p>Chưa có feedback</p>
                                 }
                                 else
                                 {
-                                    @item.Feedback
+                                    @item.feedback
                                 }
                             </td>
                             <td>
                                 <p style="color:green">Approved</p>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                <a class="btn btn-sm btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                                <a class="btn btn-sm btn-info  m-r-5" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.id">Delete</a>
                                
                             </td>
                         </tr>

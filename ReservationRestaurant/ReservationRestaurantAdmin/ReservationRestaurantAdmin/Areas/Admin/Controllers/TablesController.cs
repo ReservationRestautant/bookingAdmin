@@ -242,7 +242,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         }
 
         // GET: Admin/Tables/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
@@ -329,20 +329,20 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 var contentdata = new StringContent(data, System.Text.Encoding.UTF8, "application/json");	//nhớ viết đầy đủ này nha, thiếu UTF8 và "application/json" thì nó sẽ xuất error 415 (Unsupported Media Type).
 
                 //call api wiith content data ở trên
-                HttpResponseMessage response = await client.PutAsync(uri, contentdata);			//update nên gọi Put
+                HttpResponseMessage response = await client.DeleteAsync(uri);			//update nên gọi Put
 
                 response.EnsureSuccessStatusCode(); //check call
 
                 if (response.IsSuccessStatusCode)
                 {
                     //call api success
-                    _notifyService.Success("De active thành công");
+                    _notifyService.Success("Delete thành công");
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
                     //error, can't call api
-                    _notifyService.Success("Có lỗi xãy ra");
+                    _notifyService.Error("Có lỗi xãy ra");
                     return View(table);
                 }
             }

@@ -1,71 +1,71 @@
-﻿@model ReservationRestaurantAdmin.Models.Reservation
+﻿@model ReservationRestaurantAdmin.Models2.Reservations
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-    <h3 >Details of Booking ID: @Model.Id</h3>
+    <h3 >Details of Booking ID: @Model.id</h3>
 <div class="card-body">
     <div class="table-responsive">
         <table class="product-info-table m-t-20">
             <tbody>
                 <tr>
                     <td>ID</td>
-                    <td class="text-dark font-weight-semibold">@Model.Id</td>
+                    <td class="text-dark font-weight-semibold">@Model.id</td>
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td class="text-dark font-weight-semibold">@Model.IdNavigation.Phone</td>
+                    <td class="text-dark font-weight-semibold">@Model.userSysterm.phone</td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td class="text-dark font-weight-semibold">@Model.IdNavigation.Name</td>
+                    <td class="text-dark font-weight-semibold">@Model.userSysterm.name</td>
                 </tr>
                 <tr>
                     <td>Date</td>
-                    <td class="text-dark font-weight-semibold">@Model.Date.Value.ToString("dd/MM/yyyy")</td>
+                    <td class="text-dark font-weight-semibold">@Model.date</td>
                 </tr>
                 <tr>
                     <td>Start Time</td>
-                    <td class="text-dark font-weight-semibold">@Model.StartTime.Value.ToString("hh:mm:ss tt")</td>
+                    <td class="text-dark font-weight-semibold">@Model.startTime</td>
                 </tr>
                 <tr>
                     <td>End Time</td>
-                    <td class="text-dark font-weight-semibold">@Model.EndTime.Value.ToString("hh:mm:ss tt")</td>
+                    <td class="text-dark font-weight-semibold">@Model.endTime</td>
                 </tr>
                 <tr>
                     <td>Number Guest</td>
-                    <td class="text-dark font-weight-semibold">@Model.NumGuest</td>
+                    <td class="text-dark font-weight-semibold">@Model.number_guest</td>
                 </tr>
                 <tr>
                     <td>Description</td>
-                    <td class="text-dark font-weight-semibold">@Model.Description</td>
+                    <td class="text-dark font-weight-semibold">@Model.description</td>
                 </tr>
                 <tr>
                     <td>Price</td>
-                    <td class="text-dark font-weight-semibold">@Model.Price</td>
+                    <td class="text-dark font-weight-semibold">@Model.price</td>
                 </tr>
                 <tr>
                     <td>Discount</td>
-                    <td class="text-dark font-weight-semibold">@Model.Discount</td>
+                    <td class="text-dark font-weight-semibold">@Model.discount</td>
                 </tr>
 
 
-                @if (string.IsNullOrEmpty(Model.PhoneGuest))
+                @if (string.IsNullOrEmpty(Model.phone_guest))
                 {
                     <tr>
                         <td>PhoneGuest</td>
-                        <td class="text-dark font-weight-semibold">@Model.IdNavigation.Phone</td>
+                        <td class="text-dark font-weight-semibold">@Model.userSysterm.phone</td>
                     </tr>
                 }
                 else
                 {
                     <tr>
                         <td>PhoneGuest</td>
-                        <td class="text-dark font-weight-semibold">@Model.PhoneGuest</td>
+                        <td class="text-dark font-weight-semibold">@Model.phone_guest</td>
                     </tr>
                 }
-                @if (string.IsNullOrEmpty(Model.Feedback))
+                @if (string.IsNullOrEmpty(Model.feedback))
                 {
 
                     <tr>
@@ -77,13 +77,13 @@
                 {
                     <tr>
                         <td>Feedback</td>
-                        <td class="text-dark font-weight-semibold">@Model.Feedback </td>
+                        <td class="text-dark font-weight-semibold">@Model.feedback </td>
                     </tr>
                 }
 
 
 
-                @if (Model.Status.Equals(true))
+                @if (Model.status.Equals(true))
                 {
                     <tr>
                         <td>Status</td>
@@ -106,7 +106,7 @@
     </div>
    
         <div>
-        <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
             <a asp-action="Index">Back to List</a>
         </div>
     
