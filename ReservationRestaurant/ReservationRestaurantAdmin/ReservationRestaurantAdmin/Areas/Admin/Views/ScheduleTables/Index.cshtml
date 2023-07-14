@@ -15,7 +15,7 @@
 </div>
 
 <div class="table-responsive">
-    <h1>
+    <h1 style="color:darkblue">
         Quản lý Schedule Table
     </h1>
     <p>
@@ -44,7 +44,7 @@
                         <td>@item.startTime</td>
                         <td>@item.endTime</td>
                         <td>
-                            <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                         @*   <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.id">Edit</a> |*@
                             <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.id">Details</a> |
                             <a class="btn btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.id">Delete</a>
                         </td>

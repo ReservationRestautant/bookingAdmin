@@ -1,0 +1,53 @@
+﻿@model ReservationRestaurantAdmin.Models2.SpamVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Spam</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div class="form-group">
+                <label asp-for="phone" class="control-label">Name</label>
+                <input asp-for="phone" class="form-control" />
+                <span asp-validation-for="phone" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="spamDay" class="control-label">Capacity</label>
+                <input asp-for="spamDay" class="form-control" />
+                <span asp-validation-for="spamDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="spamWeek" class="control-label">Capacity</label>
+                <input asp-for="spamWeek" class="form-control" />
+                <span asp-validation-for="spamWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="block" class="control-label">Capacity</label>
+                <input asp-for="block" class="form-control" />
+                <span asp-validation-for="block" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="timeUnblock" class="control-label">Capacity</label>
+                <input asp-for="timeUnblock" class="form-control" />
+                <span asp-validation-for="timeUnblock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-success" asp-action="Index">Back to List</a>
+</div>
+

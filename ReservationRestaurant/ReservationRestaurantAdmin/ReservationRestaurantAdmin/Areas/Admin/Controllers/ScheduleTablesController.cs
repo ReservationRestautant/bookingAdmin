@@ -197,22 +197,22 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("startTime,endTime,date,tableRestautant.id")] ScheduleTables scheduleTable)
+        public async Task<IActionResult> Edit(int id, [Bind("startTime,endTime,date,")] ScheduleTables schedule)
         {
             try
             {
-                if (!ModelState.IsValid)    //check valid data truyền về
-                {
-                    _notifyService.Error("Không đúng format data");
-                    return View(scheduleTable);
-                }
+                ScheduleTables scheduleTables = await getScheduleById(id);
 
                 string uri = "http://localhost:8080/api/ScheduleTable";
                 using HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
+                scheduleTables.startTime = schedule.startTime;
+                scheduleTables.endTime = schedule.endTime;
+                scheduleTables.date = schedule.date;
+                scheduleTables.table_id = schedule.tableRestautant.id;
                 //parse obj ra json để gửi đi
-                string data = JsonSerializer.Serialize(scheduleTable);
+
+                string data = JsonSerializer.Serialize(scheduleTables);
 
                 //config vào content dể gửi đi
                 var contentdata = new StringContent(data, System.Text.Encoding.UTF8, "application/json");	//nhớ viết đầy đủ này nha, thiếu UTF8 và "application/json" thì nó sẽ xuất error 415 (Unsupported Media Type).
@@ -226,24 +226,26 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 {
                     //call api success
                     _notifyService.Success("Cập nhật thành công");
-                    ViewData["table_id"] = new SelectList(await getListTable(), "id", "name", scheduleTable.tableRestautant.id);
-                  
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
                     //error, can't call api
-                    _notifyService.Error("Có lỗi xãy ra");
-                    return View(scheduleTable);
+                    _notifyService.Warning("Có lỗi xãy ra");
+                    return View(scheduleTables);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 _notifyService.Error("Có lỗi xãy ra");
-                return View(scheduleTable);
+                return View();
             }
         }
+
+
+
+
 
         // GET: Admin/ScheduleTables/Delete/5
         public async Task<IActionResult> Delete(int? id)

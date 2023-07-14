@@ -4,22 +4,23 @@
     ViewData["Title"] = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-    <h3 >Details of Booking ID: @Model.id</h3>
+<h1>Details</h1>
+<h4 class="card-title">Booking ID Info - @Model.id</h4>
 <div class="card-body">
     <div class="table-responsive">
         <table class="product-info-table m-t-20">
             <tbody>
-                <tr>
+@*                <tr>
                     <td>ID</td>
                     <td class="text-dark font-weight-semibold">@Model.id</td>
-                </tr>
-                <tr>
+                </tr>*@
+                <tr >
                     <td>Phone</td>
-                    <td class="text-dark font-weight-semibold">@Model.userSysterm.phone</td>
+                    <td class="font-weight-semibold" style="color:red">@Model.userSysterm.phone</td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td class="text-dark font-weight-semibold">@Model.userSysterm.name</td>
+                    <td class="text-dark font-weight-semibold" >@Model.userSysterm.name</td>
                 </tr>
                 <tr>
                     <td>Date</td>
@@ -87,7 +88,7 @@
                 {
                     <tr>
                         <td>Status</td>
-                        <td style="color:green" class="text-dark font-weight-semibold">Approved</td>
+                        <td style="color:green" class=" font-weight-semibold">Approved</td>
 
                     </tr>
                 }
@@ -95,7 +96,7 @@
                 {
                     <tr>
                         <td>Status</td>
-                        <td style="color:red" class="text-dark font-weight-semibold">Pending</td>
+                        <td style="color:red" class=" font-weight-semibold">Pending</td>
                     </tr>
                 }
 
@@ -106,8 +107,8 @@
     </div>
    
         <div>
-        <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-            <a asp-action="Index">Back to List</a>
+     @*   <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.id">Edit</a> |*@
+        <a class="btn btn-sm btn-primary m-r-5" asp-action="Index">Back to List</a>
         </div>
     
 </div>

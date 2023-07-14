@@ -15,7 +15,7 @@
 </div>
 
 <div class="table-responsive">
-    <h1>
+    <h1 style="color: darkred">
         Quản lý Booking Await
     </h1>
   @*  <p>
@@ -48,7 +48,7 @@
                     {
                         <tr>
                             <th scope="row">@item.id</th>
-                            <td> @item.userSysterm.phone - @item.userSysterm.name</td>
+                            <td style="color:darkblue"> @item.userSysterm.phone - @item.userSysterm.name</td>
                             <td>@item.date</td>
                             <td>@item.startTime</td>
                             <td>@item.endTime</td>
@@ -71,9 +71,9 @@
                                 <p style="color:red">Pending</p>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.id">Confirm</a> 
-                              @*  <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
-                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.id">Reject</a>
+                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Approved" asp-route-id="@item.id">Approved</a>
+                                  <a class="btn btn-sm btn-info  m-r-5" asp-action="Details" asp-route-id="@item.id">Details</a> 
+                                <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.id">Delete</a>
                             </td>
                         </tr>
                     }
@@ -86,7 +86,7 @@
 
 
 <div class="table-responsive">
-    <h1>
+    <h1 style="color:darkgreen">
         Quản lý Booking
     </h1>
     @*  <p>
@@ -119,7 +119,7 @@
                     {
                         <tr>
                             <th scope="row">@item.id</th>
-                            <td> @item.userSysterm.phone - @item.userSysterm.name</td>
+                            <td style="color:darkblue"> @item.userSysterm.phone - @item.userSysterm.name</td>
                             <td>@item.date</td>
                             <td>@item.startTime</td>
                             <td>@item.endTime</td>
@@ -142,8 +142,8 @@
                                 <p style="color:green">Approved</p>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary m-r-5" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                                <a class="btn btn-sm btn-info  m-r-5" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                                <a class="btn btn-sm btn-success m-r-5" asp-action="Reject" asp-route-id="@item.id">Reject</a> 
+                                <a class="btn btn-sm btn-info  m-r-5" asp-action="Details" asp-route-id="@item.id">Details</a> 
                                 <a class="btn btn-sm btn-danger  m-r-5" asp-action="Delete" asp-route-id="@item.id">Delete</a>
                                
                             </td>

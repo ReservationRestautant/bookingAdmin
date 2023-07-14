@@ -157,26 +157,17 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 else
                 {
                     //error, can't call api
-                    _notifyService.Success("Có lỗi xãy ra");
+                    _notifyService.Warning("Có lỗi xãy ra");
                     return View(user);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                _notifyService.Success("Có lỗi xãy ra");
+                _notifyService.Error("Có lỗi xãy ra");
                 return View(user);
             }
 
-            //if (ModelState.IsValid)
-            //{
-            //    _context.Add(user);
-            //    await _context.SaveChangesAsync();
-            //    _notifyService.Success("Tạo mới thành công");
-
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //return View(user);
         }
 
         // GET: Admin/Users/Edit/5
@@ -254,45 +245,17 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 else
                 {
                     //error, can't call api
-                    _notifyService.Success("Có lỗi xãy ra");
+                    _notifyService.Warning("Có lỗi xãy ra");
                     return View(user);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                _notifyService.Success("Có lỗi xãy ra");
+                _notifyService.Error("Có lỗi xãy ra");
                 return View(user);
             }
 
-            //if (id != user.id)
-            //{
-            //    return NotFound();
-            //}
-
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        _context.Update(user);
-            //        await _context.SaveChangesAsync();
-            //        _notifyService.Success("Cập nhật thành công");
-            //    }
-            //    catch (DbUpdateConcurrencyException)
-            //    {
-            //        if (!UserExists(user.Id))
-            //        {
-            //            _notifyService.Success("Có lỗi xãy ra");
-            //            return NotFound();
-            //        }
-            //        else
-            //        {
-            //            throw;
-            //        }
-            //    }
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //return View(user);
         }
 
         // GET: Admin/Users/Delete/5

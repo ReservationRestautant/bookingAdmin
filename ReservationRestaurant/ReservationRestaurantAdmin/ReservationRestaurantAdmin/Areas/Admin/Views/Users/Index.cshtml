@@ -15,7 +15,7 @@
 </div>
 
 <div class="table-responsive">
-    <h1>
+    <h1 style="color:darkblue">
         Quản lý Customer
     </h1>
     <p>
@@ -28,8 +28,8 @@
                 <th scope="col">Phone</th>
                 <th scope="col">Password</th>
                 <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Role</th>
+          @*      <th scope="col">Phone</th>*@
+          @*      <th scope="col">Role</th>*@
                 <th scope="col">Status</th>
                 <th scope="col">#</th>
             </tr>
@@ -41,12 +41,21 @@
                 {
                     <tr>
                         <th scope="row">@item.id</th>
-                        <td> @item.phone</td>
+                        <td style="color:darkblue"> @item.phone</td>
                         <td>@item.password</td>
                         <td> @item.name</td>
-                        <td>@item.phone</td>
-                        <td>@item.role</td>
-                        <td>@item.status</td>
+                      @*  <td>@item.phone</td>*@
+                  @*      <td>@item.role</td>*@
+                        <td>
+                            @if(item.status == false)
+                            {
+                                <p style="color:red">Block</p>
+                            }
+                            else
+                            {
+                                <p style="color:green">Active</p>
+                            }
+                            </td>
                         <td>
                             <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-phone="@item.phone">Edit</a> |
                             <a class="btn btn-info  m-r-5" asp-action="Details" asp-route-phone="@item.phone">Details</a> |

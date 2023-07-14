@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace ReservationRestaurantAdmin.Models2
 {
@@ -14,5 +15,6 @@ namespace ReservationRestaurantAdmin.Models2
         {
             return $"id: {id} - name: {name} - capacity: {capacity}";
         }
+
     }
 }

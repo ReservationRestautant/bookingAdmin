@@ -247,51 +247,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
               return View(reservation);*/
         }   
 
-/*        public async Task<IActionResult> ApprovedEdit(int id, [Bind("id,startTime,endTime,date,number_guest,description,status,price,discount,feedback")] Reservations reservation)*/
-    /*    {
-            try
-            {
-                if (!ModelState.IsValid)    //check valid data truyền về
-                {
-                    _notifyService.Success("Không đúng format data");
-                    return View(reservation);
-                }
 
-                string uri = "http://localhost:8080/api/Reservation";
-                using HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //parse obj ra json để gửi đi
-                string data = JsonSerializer.Serialize(reservation);
-
-                //config vào content dể gửi đi
-                var contentdata = new StringContent(data, System.Text.Encoding.UTF8, "application/json");	//nhớ viết đầy đủ này nha, thiếu UTF8 và "application/json" thì nó sẽ xuất error 415 (Unsupported Media Type).
-
-                //call api wiith content data ở trên
-                HttpResponseMessage response = await client.PutAsync(uri, contentdata);			//update nên gọi Put
-
-                response.EnsureSuccessStatusCode(); //check call
-
-                if (response.IsSuccessStatusCode)
-                {
-                    //call api success
-                    _notifyService.Success("Cập nhật thành công");
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    //error, can't call api
-                    _notifyService.Success("Có lỗi xãy ra");
-                    return View(reservation);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                _notifyService.Success("Có lỗi xãy ra");
-                return View(reservation);
-            }
-        }*/
         // GET: Admin/Reservations/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -367,11 +323,125 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         {
             return _context.Reservations.Any(e => e.Id == id);
         }
-
-/*        public async Task<IActionResult> Edit1(int id, Reservations reservation)
+        public async Task<IActionResult> Approved(int? id)
         {
+            try
+            {
+                Reservations reservations = await getReservations(id);
 
-        }*/
+                string uri = "http://localhost:8080/api/Reservation";
+                using HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                reservations.status = true;
+                //parse obj ra json để gửi đi
+                
+                string data = JsonSerializer.Serialize(reservations);
+
+                //config vào content dể gửi đi
+                var contentdata = new StringContent(data, System.Text.Encoding.UTF8, "application/json");	//nhớ viết đầy đủ này nha, thiếu UTF8 và "application/json" thì nó sẽ xuất error 415 (Unsupported Media Type).
+
+                //call api wiith content data ở trên
+                HttpResponseMessage response = await client.PutAsync(uri, contentdata);			//update nên gọi Put
+
+                response.EnsureSuccessStatusCode(); //check call
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //call api success
+                    _notifyService.Success("Cập nhật thành công");
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    //error, can't call api
+                    _notifyService.Warning("Có lỗi xãy ra");
+                    return View(reservations);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                _notifyService.Error("Có lỗi xãy ra");
+                return View();
+            }
+        }
+
+
+        public async Task<IActionResult> Reject(int? id)
+        {
+            try
+            {
+                Reservations reservations = await getReservations(id);
+
+                string uri = "http://localhost:8080/api/Reservation";
+                using HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                reservations.status = false;
+                //parse obj ra json để gửi đi
+
+                string data = JsonSerializer.Serialize(reservations);
+
+                //config vào content dể gửi đi
+                var contentdata = new StringContent(data, System.Text.Encoding.UTF8, "application/json");	//nhớ viết đầy đủ này nha, thiếu UTF8 và "application/json" thì nó sẽ xuất error 415 (Unsupported Media Type).
+
+                //call api wiith content data ở trên
+                HttpResponseMessage response = await client.PutAsync(uri, contentdata);			//update nên gọi Put
+
+                response.EnsureSuccessStatusCode(); //check call
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //call api success
+                    _notifyService.Success("Cập nhật thành công");
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    //error, can't call api
+                    _notifyService.Warning("Có lỗi xãy ra");
+                    return View(reservations);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                _notifyService.Error("Có lỗi xãy ra");
+                return View();
+            }
+        }
+        public async Task<Reservations> getReservations(int? id)
+        {
+            try
+            {
+                string uri = "http://localhost:8080/api/Reservation/detail?id=" + id;
+                using HttpClient client = new HttpClient();
+
+                //add header
+                client.DefaultRequestHeaders.Accept.Add(
+                    new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                //thực thi gọi GET tới uri
+                var response = await client.GetAsync(uri);
+
+                //Phát sinh Exception nếu truy vấn có mã trả về không thành công
+                response.EnsureSuccessStatusCode();
+
+                //lấy data về thành chuỗi string json
+                string data = await response.Content.ReadAsStringAsync();
+
+                //parse string thành json
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                ResponseObject<Reservations> result = JsonSerializer.Deserialize<ResponseObject<Reservations>>(data, options);
+
+                if (result.data == null) return null;
+
+                return result.data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
  
