@@ -1409,4 +1409,5 @@ D:\bookingAdmin\ReservationRestaurant\ReservationRestaurantAdmin\ReservationRest
 D:\bookingAdmin\ReservationRestaurant\ReservationRestaurantAdmin\ReservationRestaurantAdmin\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spam\Create.cshtml.g.cs
 D:\bookingAdmin\ReservationRestaurant\ReservationRestaurantAdmin\ReservationRestaurantAdmin\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spam\Delete.cshtml.g.cs
 D:\bookingAdmin\ReservationRestaurant\ReservationRestaurantAdmin\ReservationRestaurantAdmin\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spam\Edit.cshtml.g.cs
+D:\bookingAdmin\ReservationRestaurant\ReservationRestaurantAdmin\ReservationRestaurantAdmin\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spam\Details1.cshtml.g.cs
 D:\bookingAdmin\ReservationRestaurant\ReservationRestaurantAdmin\ReservationRestaurantAdmin\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spam\Details.cshtml.g.cs

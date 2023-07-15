@@ -1,0 +1,43 @@
+﻿@model ReservationRestaurantAdmin.Models2.SpamVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h1>Details</h1>
+    <h4 class="card-title">Spam Info</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>Phone</td>
+                    <td class="text-dark font-weight-semibold">@Model.phone</td>
+                </tr>
+                <tr>
+                    <td>Spam Day</td>
+                    <td class="text-dark font-weight-semibold">@Model.spamDay</td>
+                </tr>
+                <tr>
+                    <td>Spam Week</td>
+                    <td class="text-dark font-weight-semibold">@Model.spamWeek</td>
+                </tr>
+                <tr>
+                    <td>Block</td>
+                    <td class="text-dark font-weight-semibold">@Model.block</td>
+                </tr>
+                <tr>
+                    <td>Time Unblock</td>
+                    <td class="text-dark font-weight-semibold">@Model.timeUnblock</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+        <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-phone="@Model.phone">Edit</a> |
+        <a class="btn btn-success" class="btn btn-success  m-r-5" asp-action="Index">Back to List</a>
+    </div>
+</div>

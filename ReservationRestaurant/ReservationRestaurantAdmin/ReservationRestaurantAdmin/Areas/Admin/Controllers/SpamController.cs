@@ -1,17 +1,19 @@
-﻿using AspNetCoreHero.ToastNotification.Abstractions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ReservationRestaurantAdmin.Models;
-using ReservationRestaurantAdmin.ModelsResponse.UserSytem;
-using System.Net.Http;
-using System.Text.Json;
-using System;
-using System.Threading.Tasks;
-using ReservationRestaurantAdmin.ModelsResponse.Spam;
 using ReservationRestaurantAdmin.Models2;
 using ReservationRestaurantAdmin.ModelsResponse;
-using System.Net.Http.Headers;
-using System.Net.Http;
+using ReservationRestaurantAdmin.ModelsResponse.Spam;
 
 
 namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
@@ -19,16 +21,18 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
     [Area("Admin")]
     public class SpamController : Controller
     {
+        private readonly BookingRestaurantContext _context;
         public INotyfService _notifyService { get; }
-        public SpamController( INotyfService notifyService)
+        public SpamController(BookingRestaurantContext context, INotyfService notifyService)
         {
+            _context = context;
             _notifyService = notifyService;
         }
         public async Task<IActionResult> Index()
         {
             try
             {
-                string uri = "http://localhost:8080/api/spam";
+                string uri = "http://localhost:8080/api/Spam";
                 using HttpClient client = new HttpClient();
 
                 //add header
@@ -60,7 +64,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         {
             try
             {
-                string uri = "http://localhost:8080/api/spam/detail?phone=" + phone;
+                string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
 
                 //add header
@@ -98,26 +102,17 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         //"phone,spamDay,spamWeek,block,timeUnBlock"
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(string phone,[Bind("phone")] SpamVM spam)
+        public async Task<IActionResult> Create(string phone)
         {
             try
             {
-                spam.spamDay = 0;
-                spam.spamWeek = 0;
-                spam.block = false;
-                spam.timeUnblock = null;
-                if (!ModelState.IsValid)    //check valid data truyền về
-                {
-                    _notifyService.Success("Không đúng format data");
-                    return View(spam);
-                }
-
-                string uri = "http://localhost:8080/api/spam";
+                
+                string uri = "http://localhost:8080/api/Spam?phone=" + phone;
                 using HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi
-                string data = JsonSerializer.Serialize(spam);
+                string data = JsonSerializer.Serialize(uri);
 
                 //config vào content dể gửi đi
                 var contentdata = new StringContent(data, System.Text.Encoding.UTF8, "application/json");	//nhớ viết đầy đủ này nha, thiếu UTF8 và "application/json" thì nó sẽ xuất error 415 (Unsupported Media Type).
@@ -137,14 +132,14 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 {
                     //error, can't call api
                     _notifyService.Warning("Có lỗi xãy ra");
-                    return View(spam);
+                    return View();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 _notifyService.Error("Có lỗi xãy ra");
-                return View(spam);
+                return View();
             }
 
         }
@@ -154,7 +149,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         {
             try
             {
-                string uri = "http://localhost:8080/api/spam/detail?phone=" + phone;
+                string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
 
                 //add header
@@ -187,17 +182,17 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string phone, [Bind("phone,spamDay,spamWeek,block,timeUnBlock")] SpamVM spam)
+        public async Task<IActionResult> Edit( string phone,[Bind("phone,spamDay,spamWeek,block,timeUnBlock")] SpamVM spam)
         {
             try
             {
                 if (!ModelState.IsValid)    //check valid data truyền về
                 {
-                    _notifyService.Success("Không đúng format data");
+                    _notifyService.Warning("Không đúng format data");
                     return View(spam);
                 }
 
-                string uri = "http://localhost:8080/api/spam";
+                string uri = "http://localhost:8080/api/Spam";
                 using HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -237,7 +232,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         {
             try
             {
-                string uri = "http://localhost:8080/api/spam/detail?phone=" + phone;
+                string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
 
                 //add header
@@ -271,7 +266,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
         {
             try
             {
-                string uri = "http://localhost:8080/api/spam/detail?phone=" + phone;
+                string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
 
                 //add header
@@ -309,7 +304,7 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             try
             {
                 SpamVM spamVM = await getId(phone);
-                string uri = "http://localhost:8080/api/spam?phone=" + phone;
+                string uri = "http://localhost:8080/api/Spam?phone=" + phone;
                 using HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
