@@ -40,8 +40,13 @@ namespace ReservationRestaurantAdmin.Controllers
             if(Username == "admin" && Password == "1")
             {
                 return Redirect("/Admin");
-            }   
-            return View();
+            }
+            else
+            {
+                return Redirect("/Home");
+            }
+            return Redirect("/Home");
+
         }
     }
 }
