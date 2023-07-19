@@ -10,7 +10,7 @@
 
         public string phone { get; set; }
 
-        public char role { get; set; }
+        public string role { get; set; }
 
         public bool status { get; set; }
 

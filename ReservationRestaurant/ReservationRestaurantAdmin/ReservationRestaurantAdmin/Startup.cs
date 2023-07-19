@@ -30,7 +30,7 @@ namespace ReservationRestaurantAdmin
         {
             var stringConnectdb = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<BookingRestaurantContext>(options => options.UseSqlServer(stringConnectdb));
-
+            services.AddSession();
             services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddNotyf(config =>
@@ -52,6 +52,7 @@ namespace ReservationRestaurantAdmin
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

@@ -35,6 +35,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 string uri = "http://localhost:8080/api/Spam";
                 using HttpClient client = new HttpClient();
 
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -66,6 +72,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -109,6 +121,13 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 
                 string uri = "http://localhost:8080/api/Spam?phone=" + phone;
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi
@@ -152,6 +171,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
 
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -194,6 +219,13 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
                 string uri = "http://localhost:8080/api/Spam";
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi
@@ -235,6 +267,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
 
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -268,6 +306,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Spam/detail?phone=" + phone;
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -306,6 +350,13 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 SpamVM spamVM = await getId(phone);
                 string uri = "http://localhost:8080/api/Spam?phone=" + phone;
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi

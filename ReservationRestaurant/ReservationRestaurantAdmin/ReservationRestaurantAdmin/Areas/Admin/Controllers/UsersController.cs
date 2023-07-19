@@ -35,7 +35,13 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             try
             {
                 string uri = "http://localhost:8080/api/Customer";
+
                 using HttpClient client = new HttpClient();
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -70,6 +76,11 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Customer/search?phone=" + phone;
                 using HttpClient client = new HttpClient();
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -135,6 +146,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
                 string uri = "http://localhost:8080/api/Customer";
                 using HttpClient client = new HttpClient();
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi
@@ -177,6 +194,11 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Customer/search?phone=" + phone;
                 using HttpClient client = new HttpClient();
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -223,6 +245,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
                 string uri = "http://localhost:8080/api/Customer?action=Update";
                 using HttpClient client = new HttpClient();
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi
@@ -265,6 +293,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Customer/search?phone=" + phone;
                 using HttpClient client = new HttpClient();
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -314,6 +348,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 string uri = "http://localhost:8080/api/Customer/search?phone=" + phone;
                 using HttpClient client = new HttpClient();
 
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -352,6 +392,13 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
                 string uri = "http://localhost:8080/api/Customer?action=DeActive";
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi

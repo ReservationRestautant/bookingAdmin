@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,13 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Reservation";
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -72,6 +80,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Reservation/detail?id=" + id;
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
@@ -166,6 +180,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 string uri = "http://localhost:8080/api/Reservation/detail?id=" + id;
                 using HttpClient client = new HttpClient();
 
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -211,6 +231,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
                 string uri = "http://localhost:8080/api/Reservation";
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //parse obj ra json để gửi đi
@@ -256,6 +282,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 string uri = "http://localhost:8080/api/Reservation/detail?id=" + id;
                 using HttpClient client = new HttpClient();
 
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -293,6 +325,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
                 
                 string uri = "http://localhost:8080/api/Reservation?id=" +id;
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //call api wiith content data ở trên
@@ -331,7 +369,15 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
                 string uri = "http://localhost:8080/api/Reservation";
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //change status
                 reservations.status = true;
                 //parse obj ra json để gửi đi
                 
@@ -375,7 +421,15 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
 
                 string uri = "http://localhost:8080/api/Reservation";
                 using HttpClient client = new HttpClient();
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
+
+
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //change status
                 reservations.status = false;
                 //parse obj ra json để gửi đi
 
@@ -415,6 +469,12 @@ namespace ReservationRestaurantAdmin.Areas.Admin.Controllers
             {
                 string uri = "http://localhost:8080/api/Reservation/detail?id=" + id;
                 using HttpClient client = new HttpClient();
+
+
+                //add jwt vào header
+                string token = HttpContext.Session.GetString("TOKEN");
+                AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = authHeader;
 
                 //add header
                 client.DefaultRequestHeaders.Accept.Add(
